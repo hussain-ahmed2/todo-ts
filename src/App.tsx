@@ -50,6 +50,7 @@ function App() {
           className={`btn complete-btn ${showCompleted && "active"}`}
         >
           Completed Tasks
+          <span className="completed-todo-count">{completedTodos.length}</span>
         </button>
       </div>
 
