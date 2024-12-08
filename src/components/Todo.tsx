@@ -32,11 +32,7 @@ function Todo({
   edit: boolean;
 }) {
   function handleDelete() {
-    if (!todo.checked) setTodos((prev) => [...prev].filter((el) => el.id !== todo.id));
-    else {
-      setCompletedTodos(prev => [...prev, {...todo, finishTime: new Date().toLocaleString()}]);
-      setTodos(prev => [...prev].filter(el => el.id !== todo.id));
-    }
+    setTodos((prev) => [...prev].filter((el) => el.id !== todo.id));
   }
 
   function handleEdit() {
@@ -50,10 +46,24 @@ function Todo({
         el.id === todo.id ? { ...el, checked: !el.checked } : el
       )
     );
+    setCompletedTodos((prev) => [
+      ...prev,
+      { ...todo, finishTime: new Date().toLocaleString() },
+    ]);
+    setTimeout(() => {
+      setTodos((prev) => [...prev].filter((el) => el.id !== todo.id));
+      setCompletedTodos(prev => [...prev].sort((a, b) => b.finishTime.localeCompare(a.finishTime)))
+    }, 3000);
+
   }
 
   return (
     <li className={`todo`}>
+      <div className={`todo-checked ${todo.checked && "todo-checked-show"}`}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
       <div className="todo-content">
         <FaCheckCircle
           className={`check ${todo.checked && "checked"}`}
@@ -74,7 +84,11 @@ function Todo({
           <FaTrash />
         </button>
         {!todo.checked && (
-          <button className={`btn edit-btn ${edit && "active"}`} onClick={handleEdit} title="Edit">
+          <button
+            className={`btn edit-btn ${edit && "active"}`}
+            onClick={handleEdit}
+            title="Edit"
+          >
             <FaEdit />
           </button>
         )}

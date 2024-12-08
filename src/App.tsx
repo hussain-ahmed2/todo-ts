@@ -62,7 +62,7 @@ function App() {
 
       <ul className="todo-list">
         <li>
-          <h2 className="title">All Tasks</h2>
+          <h2 className="title">Current Tasks</h2>
         </li>
         {todos.length ? (
           todos.map((todo) => (
