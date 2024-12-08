@@ -47,12 +47,11 @@ function Todo({
       )
     );
     setCompletedTodos((prev) => [
-      ...prev,
       { ...todo, finishTime: new Date().toLocaleString() },
+      ...prev,
     ]);
     setTimeout(() => {
       setTodos((prev) => [...prev].filter((el) => el.id !== todo.id));
-      setCompletedTodos(prev => [...prev].sort((a, b) => b.finishTime.localeCompare(a.finishTime)))
     }, 3000);
 
   }
