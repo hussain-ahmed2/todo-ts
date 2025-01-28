@@ -17,6 +17,10 @@ A simple todo list app built with React and TypeScript.
 * Run the development server with `npm run dev`
 * Open [http://localhost:3000](http://localhost:3000) in your browser
 
+## Run in Production
+
+* [Live Link](https://todo-app-by-hussain.netlify.app/)
+
 ## Build and Run in Production
 
 * Run `npm run build` to build the app
@@ -25,3 +29,4 @@ A simple todo list app built with React and TypeScript.
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
